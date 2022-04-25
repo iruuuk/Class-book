@@ -3,43 +3,44 @@
 #include <vector>
 using namespace std;
 
+void out(int n, vector <string> surname, vector <int> gr, vector <int> mark, vector <string> sub) {
+    cout << "Surname     Group numder     Mark     Subject" << endl;
+    for (int i = 0; i < n; i++) {
+        cout << surname[i] << "         ";
+        cout << gr[i] << "               ";
+        cout << mark[i] << "         ";
+        cout << sub[i];
+        cout << endl;
+    }
+}
+
 int main()
 {
-    int to_do, n;
+    int to_do = 68, n;
     cout << "Enter number of students" << endl;
     cin >> n;
-    int len = 0;
-    vector <string> surname(n);
-    vector <int> gr(n);
-    vector <int> mark(n);
-    vector <string> sub(n);
+    vector <string> surname(30);
+    vector <int> gr(30);
+    vector <int> mark(30);
+    vector <string> sub(30);
     cout << "Hello, what you want to do?" << endl;
-    cout << "If you want to rewrite the list, enter 1" << endl;
-    cin >> to_do;
-    if (to_do == 1 ) {
-        cout << "Surname     Group numder     Mark     Subject";
-        for (int i = 0; i < n; i++) {
-            cin >> surname[i];
-            string bb = surname[i];
-            len = bb.size();
-            for (int j = 0; j < 12 - len; j++) cout << " ";
-            cin >> gr[i];
-            int k = gr[i];
-            len = 0;
-            while (k != 0) {
-                k = k / 10;
-                len++;
+    while (to_do != 0) {
+        cout << "If you want to exit, enter 0" << endl;
+        cout << "If you want to rewrite the list, enter 1" << endl;
+        cout << "If you want to look trough your list, enter 2" << endl;
+        cin >> to_do;
+        if (to_do == 0) cout << "Goodbye!";
+        if (to_do == 1) {
+            cout << "Surname     Group numder     Mark     Subject" << endl;
+            for (int i = 0; i < n; i++) {
+                cin >> surname[i];
+                cin >> gr[i];
+                cin >> mark[i];
+                cin >> sub[i];
             }
-            for (int  f= 0; f < 17 - len; f++) cout << " ";
-            cin >> mark[i];
-            k = mark[i];
-            len = 0;
-            while (k != 0) {
-                k = k / 10;
-                len++;
-            }
-            for (int x = 0; x < 9 - len; x++) cout << " ";
-            cin >> sub[i];
+        }
+        else if (to_do == 2) {
+            out(n, surname, gr, mark, sub);
         }
     }
 }
