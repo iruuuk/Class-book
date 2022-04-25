@@ -17,13 +17,11 @@ void out(int n, vector <string> surname, vector <int> gr, vector <int> mark, vec
 int main()
 {
     int to_do = 68, n;
-    cout << "Enter number of students" << endl;
-    cin >> n;
     vector <string> surname(30);
     vector <int> gr(30);
     vector <int> mark(30);
     vector <string> sub(30);
-    cout << "Hello, what you want to do?" << endl;
+    cout << "Hello!" << endl;
     while (to_do != 0) {
         cout << "If you want to exit, enter 0" << endl;
         cout << "If you want to rewrite the list, enter 1" << endl;
@@ -31,6 +29,8 @@ int main()
         cin >> to_do;
         if (to_do == 0) cout << "Goodbye!";
         if (to_do == 1) {
+            cout << "Enter number of students" << endl;
+            cin >> n;
             cout << "Surname     Group numder     Mark     Subject" << endl;
             for (int i = 0; i < n; i++) {
                 cin >> surname[i];
