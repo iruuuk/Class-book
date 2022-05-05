@@ -224,22 +224,15 @@ string* deleting(int n, int m, string** a, int choice9)
     return 0;
 }
 
-string* middle(int n, int m, string** spisok)
+string* otsenka(int n, int m, string** spisok)
 {
     int summa = 0;
-    cout << "Средний балл студентов по всем предметам: ";
-    for (int i = 0; i < n; i++)
-    {
-        summa = summa + stoi(spisok[i][4]);
+    cout << "Перевод оценок в буквенную систему: ";
+    for(int i = 0; i < 5; i++) {
+        if ( int marks[i][3] != -1 ) {
+            summa = summa + int marks[i][3];
+        }
     }
-    cout << summa/n << endl;
-    summa = 0;
-    cout << "??? ";
-    for (int i = 0; i < n; i++)
-    {
-        summa = summa + stoi(spisok[i][4]) + stoi(spisok[i][3]);
-    }
-    cout << summa/n << endl;
     return 0;
 }
 
@@ -403,9 +396,49 @@ int main()
             cout << "Успешно удалено! " << endl;
             n = n - 1;
         }
-        if (choice == 10)
+        if (choice == 10) {
+            int marks[5], i;
+            float sum=0,avg;
+            cout<<"\n Enter Marks of Student \n";
+            cout<<"------------------------------------";
+            cout<<"\n Quizzes : ";
+            cin>>marks[0];
+            cout<<"\n Labwork : ";
+            cin>>marks[1];
+            cout<<"\n Midterm : ";
+            cin>>marks[2];
+            cout<<"\n Final : ";
+            cin>>marks[3];
+            cout<<"\n Participation : ";
+            cin>>marks[4];
+            for(i=0;i<5;i++) { 
+                sum=sum+marks[i];
+                
+            }
+            cout<<"------------------------------------";
+            cout<<"\n Total Marks of Student = "<<sum;
+            cout<<"\n Grade   = ";
+            if(sum>80) {
+                cout<<"A";
+                
+            }
+            else if(sum>60 && sum<=80) {
+                cout<<"B";
+                
+            }
+            else if(sum>40 && sum<=60)
+            {
+                cout<<"C";
+                
+            }
+else {
+    cout<<"D";
+    
+}
+return 0;
+}
         {
-            middle(n, m, spisok);
+            otsenka(n, m, spisok);
         }
         cout <<  endl << "Нажмите " << endl << "1 - перезапись списка студентов" << endl << "2 - просмотр списка студентов" << endl << "3 - изменение информации о студенте под номером N" << endl << "4 - фильтрация по номеру группы" << endl << "5 - подсчет дисциплины с высоким средним баллом" << endl << "6 - показать под номером N" << endl << "7 - сортировка по ФИО и номеру группы" << endl << "8 - добавить под номером N" << endl << "9 - удалить под номером N" << endl << "10 - вывод рейтинга группы" << endl << "0 - выход из приложения" << endl;
         cin >> choice;
@@ -414,4 +447,5 @@ int main()
     cout << "Хорошая работа! Ждём вашего возвращения! ";
     return 0;
     }
+    return 0;
 }
